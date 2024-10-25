@@ -18,6 +18,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+// Import images and video
+import LockedInLogo from "/LockedInLogo.png";
+import UnlockIcon from "/Unlock.png";
+import ConceptVideo from "/video.mov";
+
 export default function App() {
   const projects = [
     {
@@ -230,7 +235,7 @@ export default function App() {
               <span className="flex items-center justify-center md:inline-flex">
                 Locked
                 <img
-                  src="/LockedInLogo.png"
+                  src={LockedInLogo}
                   alt="LockedIn Logo"
                   className={`h-12 sm:h-24 ml-2 ${
                     animateLogo
@@ -278,7 +283,7 @@ export default function App() {
                 controls
                 title="LockedIn Concept Video"
               >
-                <source src="/video.mov" type="video/quicktime" />
+                <source src={ConceptVideo} type="video/quicktime" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -315,7 +320,7 @@ export default function App() {
                     className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
                   >
                     <img
-                      src="/Unlock.png"
+                      src={UnlockIcon}
                       alt="Unlock icon"
                       className="w-auto h-4"
                     />
@@ -357,7 +362,7 @@ export default function App() {
                     className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
                   >
                     <img
-                      src="/Unlock.png"
+                      src={UnlockIcon}
                       alt="Unlock icon"
                       className="w-auto h-4 mr-2"
                     />
