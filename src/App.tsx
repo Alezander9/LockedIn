@@ -17,6 +17,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 // Import images and video
 import LockedInLogo from "/LockedInLogo.png";
@@ -29,51 +30,142 @@ export default function App() {
       title: "Needfinding",
       description: "Interviews and observations",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Slides",
+          url: window.location.href + "A1slides.pdf",
+        },
+      ],
     },
     {
       title: "Brainstorming",
       description: "POVs, HMWs, and assumption testing",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Slides",
+          url: window.location.href + "A2slides.pdf",
+        },
+      ],
     },
     {
       title: "Concept Video",
       description: "",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Slides",
+          url: window.location.href + "A4slides.pdf",
+        },
+        {
+          title: "Video",
+          url: window.location.href + "video.mov",
+        },
+      ],
     },
     {
       title: "Sketching",
       description: "Low-fidelity prototyping and user testing",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Slides",
+          url: window.location.href + "A5slides.pdf",
+        },
+      ],
     },
     {
       title: "First Prototype",
       description: "Medium-fidelity prototyping",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Slides",
+          url: window.location.href + "A6slides.pdf",
+        },
+        {
+          title: "Prototype",
+          url: window.location.href + "prototype.pdf",
+        },
+        {
+          title: "README",
+          url: window.location.href + "README.md",
+        },
+      ],
     },
     {
       title: "Second Prototype",
       description: "High-fidelity prototyping",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Slides",
+          url: window.location.href + "A8slides.pdf",
+        },
+        {
+          title: "Prototype",
+          url: window.location.href + "prototype.pdf",
+        },
+        {
+          title: "README",
+          url: window.location.href + "README.md",
+        },
+      ],
     },
     {
       title: "Evaluation",
       description: "",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Report",
+          url: window.location.href + "A9slides.pdf",
+        },
+      ],
     },
     {
       title: "Pitch",
       description: "Poster, pitch deck, and demo video",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Slides",
+          url: window.location.href + "A10slides.pdf",
+        },
+        {
+          title: "Script",
+          url: window.location.href + "script.pdf",
+        },
+        {
+          title: "Poster",
+          url: window.location.href + "poster.pdf",
+        },
+        {
+          title: "Demo Video",
+          url: window.location.href + "demo.mov",
+        },
+      ],
     },
     {
       title: "Final Report",
       description: "",
       details: "Project details go here...",
+      links: [
+        {
+          title: "Report",
+          url: window.location.href + "A11slides.pdf",
+        },
+      ],
     },
   ];
 
   const [darkMode, setDarkMode] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(true);
+  const [dialogPosition, setDialogPosition] = useState({ x: 0, y: 0 });
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedLinks, setSelectedLinks] = useState<
+    { title: string; url: string }[]
+  >([]);
 
   useEffect(() => {
     setAnimateLogo(true);
@@ -90,6 +182,16 @@ export default function App() {
   const triggerAnimation = () => {
     setAnimateLogo(true);
     setTimeout(() => setAnimateLogo(false), 600); // Changed from 1000 to 600
+  };
+
+  const openDialogAtPosition = (
+    x: number,
+    y: number,
+    projectLinks: { title: string; url: string }[]
+  ) => {
+    setDialogPosition({ x, y });
+    setSelectedLinks(projectLinks);
+    setDialogOpen(true);
   };
 
   return (
@@ -360,6 +462,10 @@ export default function App() {
                   <Button
                     variant="ghost"
                     className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
+                    onClick={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      openDialogAtPosition(rect.x, rect.y, project.links);
+                    }}
                   >
                     <img
                       src={UnlockIcon}
@@ -385,6 +491,31 @@ export default function App() {
           </div>
         </footer>
       </div>
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent
+          className="bg-white dark:bg-darkBlue border-lightBlue dark:border-blue"
+          style={{
+            position: "fixed",
+            left: `${dialogPosition.x}px`,
+            top: `${dialogPosition.y}px`,
+            transform: "translate(-50%, -100%)",
+          }}
+        >
+          <div className="flex flex-col space-y-2">
+            {selectedLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                className="text-black hover:text-blue dark:text-white dark:hover:text-blue"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.title}
+              </a>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
