@@ -85,11 +85,11 @@ export default function App() {
         },
         {
           title: "Prototype",
-          url: window.location.href + "prototype.pdf",
+          url: "https://www.figma.com/proto/OCFo0SgSrsXFMxZrXMB7Am/LockedIn-Med-Fi-Prototype?node-id=0-1&t=8s75gByDfe2TJ0c0-1",
         },
         {
           title: "README",
-          url: window.location.href + "README.md",
+          url: window.location.href + "README.pdf",
         },
       ],
     },
@@ -392,6 +392,26 @@ export default function App() {
           </div>
         </section>
 
+        {/* Figma Demo Section */}
+        <section className="container px-4 py-24 mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
+            Try our Figma demo:
+          </h2>
+          <div className="max-w-[393px] mx-auto">
+            <div
+              className="relative w-full rounded-md shadow-lg overflow-hidden"
+              style={{ paddingBottom: "216.79%" }}
+            >
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
+                src="https://embed.figma.com/proto/OCFo0SgSrsXFMxZrXMB7Am/LockedIn-Med-Fi-Prototype?node-id=55-452&node-type=canvas&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=55%3A452&embed-host=share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Features Section */}
         <section id="features" className="container px-4 py-24 mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
@@ -458,22 +478,42 @@ export default function App() {
                     </p>
                   </CardContent>
                 </Card>
-                <div className="absolute bottom-4 right-4">
+                <div className="absolute bottom-4 w-full px-4 flex justify-between">
                   <Button
                     variant="ghost"
                     className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
-                    onClick={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      openDialogAtPosition(rect.x, rect.y, project.links);
+                    onClick={() => {
+                      const slidesLink = project.links.find(
+                        (link) => link.title === "Slides"
+                      );
+                      if (slidesLink) {
+                        window.open(slidesLink.url, "_blank");
+                      }
                     }}
                   >
-                    <img
-                      src={UnlockIcon}
-                      alt="Unlock icon"
-                      className="w-auto h-4 mr-2"
-                    />
-                    Unlock More
+                    Slides
                   </Button>
+                  {project.links.filter((link) => link.title !== "Slides")
+                    .length > 0 && (
+                    <Button
+                      variant="ghost"
+                      className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
+                      onClick={(e) => {
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const nonSlideLinks = project.links.filter(
+                          (link) => link.title !== "Slides"
+                        );
+                        openDialogAtPosition(rect.x, rect.y, nonSlideLinks);
+                      }}
+                    >
+                      <img
+                        src={UnlockIcon}
+                        alt="Unlock icon"
+                        className="w-auto h-4 mr-2"
+                      />
+                      Unlock More
+                    </Button>
+                  )}
                 </div>
               </div>
             ))}
