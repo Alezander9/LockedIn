@@ -22,36 +22,41 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 // Import images and video
 import LockedInLogo from "/LockedInLogo.png";
 import UnlockIcon from "/Unlock.png";
-import ConceptVideo from "/video.mov";
+import ConceptVideoMP4 from "/video.mp4";
 
 export default function App() {
   const projects = [
     {
       title: "Needfinding",
       description: "Interviews and observations",
-      details: "Project details go here...",
+      details:
+        "We listened to the stories of students and professionals, in order to build a clear understanding of both sides of education.",
       links: [
         {
           title: "Slides",
           url: window.location.href + "A1slides.pdf",
         },
       ],
+      icon: "fa fa-search", // Search icon for needfinding
     },
     {
       title: "Brainstorming",
       description: "POVs, HMWs, and assumption testing",
-      details: "Project details go here...",
+      details:
+        "After defining issues in the education space, we set out to brainstorm ideas and test assumptions.",
       links: [
         {
           title: "Slides",
           url: window.location.href + "A2slides.pdf",
         },
       ],
+      icon: "fa fa-lightbulb", // Lightbulb icon for brainstorming
     },
     {
       title: "Concept Video",
       description: "",
-      details: "Project details go here...",
+      details:
+        "We produced this concept video to illustrate our solution and tasks that we set out to solve.",
       links: [
         {
           title: "Slides",
@@ -62,22 +67,26 @@ export default function App() {
           url: window.location.href + "video.mov",
         },
       ],
+      icon: "fa fa-video", // Video icon for concept video
     },
     {
       title: "Sketching",
       description: "Low-fidelity prototyping and user testing",
-      details: "Project details go here...",
+      details:
+        "After sketching out some storyboards and task flows, we created a lo-fi prototype on Miro.",
       links: [
         {
           title: "Slides",
           url: window.location.href + "A5slides.pdf",
         },
       ],
+      icon: "fa fa-pencil-alt", // Pencil icon for sketching
     },
     {
       title: "First Prototype",
       description: "Medium-fidelity prototyping",
-      details: "Project details go here...",
+      details:
+        "We incorporated feedback from our lo-fi testing to revise our design and create a medium-fi prototype in Figma.",
       links: [
         {
           title: "Slides",
@@ -92,11 +101,13 @@ export default function App() {
           url: window.location.href + "README.pdf",
         },
       ],
+      icon: "fa fa-cube", // Cube icon for prototyping
     },
     {
       title: "Second Prototype",
       description: "High-fidelity prototyping",
-      details: "Project details go here...",
+      details:
+        "We coded our high-fi prototype, utiliizing React Native...",
       links: [
         {
           title: "Slides",
@@ -111,17 +122,20 @@ export default function App() {
           url: window.location.href + "README.md",
         },
       ],
+      icon: "fa fa-laptop-code", // Laptop code icon for high-fidelity prototyping
     },
     {
-      title: "Evaluation",
+      title: "Heruistic Evaluation",
       description: "",
-      details: "Project details go here...",
+      details:
+        "Using Jakob Nielsen's 'Ten Usability Heuristics' and some additional ones defined in class, our peers created the following report to help guide us in creating a better hi-fi prototype.",
       links: [
         {
           title: "Report",
-          url: window.location.href + "A9slides.pdf",
+          url: window.location.href + "A9HE.pdf",
         },
       ],
+      icon: "fa fa-check-circle", // Check-circle icon for evaluation
     },
     {
       title: "Pitch",
@@ -145,6 +159,7 @@ export default function App() {
           url: window.location.href + "demo.mov",
         },
       ],
+      icon: "fa fa-microphone", // Microphone icon for pitch
     },
     {
       title: "Final Report",
@@ -156,8 +171,10 @@ export default function App() {
           url: window.location.href + "A11slides.pdf",
         },
       ],
+      icon: "fa fa-file-alt", // File icon for final report
     },
   ];
+  
 
   const [darkMode, setDarkMode] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(true);
@@ -385,7 +402,7 @@ export default function App() {
                 controls
                 title="LockedIn Concept Video"
               >
-                <source src={ConceptVideo} type="video/quicktime" />
+               <source src={ConceptVideoMP4} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -457,66 +474,76 @@ export default function App() {
         {/* Project Section */}
         <section id="project" className="container px-4 py-24 mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
-            Project info
+            Design Process
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <div key={index} className="relative">
-                <Card className="bg-white dark:bg-darkBlue border-lightBlue dark:border-blue h-full pb-16">
-                  <CardHeader>
-                    <CardTitle className="text-blue dark:text-lightBlue">
-                      {project.title}
-                    </CardTitle>
-                    <CardDescription className="text-darkBlue dark:text-white">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-black dark:text-white">
-                      {project.details}
-                    </p>
-                  </CardContent>
-                </Card>
-                <div className="absolute bottom-4 w-full px-4 flex justify-between">
+            <div key={index} className="relative">
+            <Card className="bg-white dark:bg-darkBlue border-lightBlue dark:border-blue h-full pb-16 relative">
+              {/* Add a container for the title and icon */}
+              <CardHeader className="relative">
+                <CardTitle className="text-blue dark:text-lightBlue">
+                  {project.title}
+                </CardTitle>
+                <CardDescription className="text-darkBlue dark:text-white">
+                  {project.description}
+                </CardDescription>
+                {/* Icon placed in the top-right corner */}
+                <i
+                  className={`${project.icon} text-blue dark:text-lightBlue text-2xl absolute top-4 right-4`}
+                />
+              </CardHeader>
+              <CardContent>
+                <p className="text-black dark:text-white">{project.details}</p>
+              </CardContent>
+            </Card>
+              <div className="absolute bottom-4 w-full px-4 flex justify-between">
+                {/* Dynamically Render Button for Slides or Report */}
+                {project.links.some((link) => link.title === "Slides" || link.title === "Report") && (
                   <Button
                     variant="ghost"
                     className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
                     onClick={() => {
-                      const slidesLink = project.links.find(
-                        (link) => link.title === "Slides"
+                      const reportOrSlidesLink = project.links.find(
+                        (link) => link.title === "Slides" || link.title === "Report"
                       );
-                      if (slidesLink) {
-                        window.open(slidesLink.url, "_blank");
+                      if (reportOrSlidesLink) {
+                        window.open(reportOrSlidesLink.url, "_blank");
                       }
                     }}
                   >
-                    Slides
+                    {project.links.some((link) => link.title === "Report")
+                      ? "Report"
+                      : "Slides"}
                   </Button>
-                  {project.links.filter((link) => link.title !== "Slides")
-                    .length > 0 && (
-                    <Button
-                      variant="ghost"
-                      className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
-                      onClick={(e) => {
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const nonSlideLinks = project.links.filter(
-                          (link) => link.title !== "Slides"
-                        );
-                        openDialogAtPosition(rect.x, rect.y, nonSlideLinks);
-                      }}
-                    >
-                      <img
-                        src={UnlockIcon}
-                        alt="Unlock icon"
-                        className="w-auto h-4 mr-2"
-                      />
-                      Unlock More
-                    </Button>
-                  )}
-                </div>
+                )}
+
+                {/* Unlock More Button */}
+                {project.links.filter((link) => link.title !== "Slides" && link.title !== "Report").length >
+                  0 && (
+                  <Button
+                    variant="ghost"
+                    className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
+                    onClick={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const nonSlideAndReportLinks = project.links.filter(
+                        (link) => link.title !== "Slides" && link.title !== "Report"
+                      );
+                      openDialogAtPosition(rect.x, rect.y, nonSlideAndReportLinks);
+                    }}
+                  >
+                    <img
+                      src={UnlockIcon}
+                      alt="Unlock icon"
+                      className="w-auto h-4 mr-2"
+                    />
+                    Unlock More
+                  </Button>
+                )}
               </div>
-            ))}
+            </div>
+          ))}
           </div>
         </section>
 
