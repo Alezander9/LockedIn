@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -23,6 +22,64 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import LockedInLogo from "/LockedInLogo.png";
 import UnlockIcon from "/Unlock.png";
 import ConceptVideoMP4 from "/video.mp4";
+import ConceptVideo from "/video.mov";
+
+// Add this type definition and team members array before the App component
+type TeamMember = {
+  name: string;
+  photo: string;
+  bio: string;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Alexander Yue",
+    photo: "Alex.jpg",
+    bio: "Alexander is a sophomore studying Physics and Computer Science at Stanford. He conducts research on fast Machine Learning and Quantum Information Technology, but is also passionate about about building products that are both useful and accessible to everyone.",
+  },
+  {
+    name: "Evan Hsu",
+    photo: "Evan.jpg",
+    bio: "Evan is a coterm at Stanford studying Human-Computer Interaction. When he’s not playing fingerstyle guitar, he’s teaching—co-leading Ravenswood Reads and a karate class for Kids with Dreams. ",
+  },
+  {
+    name: "Diego Valdez Duran",
+    photo: "Diego.jpg",
+    bio: "Diego is master's student studying HCI with an AI undergraduate background at Stanford University. He’s interested in integrated AI systems within everyday applications to better people’s lives. ",
+  },
+  {
+    name: "Ecem Yilmazhaliloglu",
+    photo: "Ecem.jpg",
+    bio: "Ecem is a senior studying Computer Science at Stanford. ",
+  },
+];
+
+// Add this type definition and features array before the App component
+type Feature = {
+  title: string;
+  details: string;
+  image: string;
+};
+
+const features: Feature[] = [
+  {
+    title: "Join Public Study Sessions",
+    details: "View and host study sessions for your whole campus.",
+    image: "EventsGraphic.JPEG",
+  },
+  {
+    title: "Deconstruct Assignments",
+    details:
+      "Upload class materials and assignments and let our AI deconstruct them into manageable tasks.",
+    image: "TasksGraphic.JPEG",
+  },
+  {
+    title: "Match With Study Buddies",
+    details:
+      "Create a study profile and get matched with compatible study buddies in your classes for weekly study sessions.",
+    image: "GroupsGraphic.JPEG",
+  },
+];
 
 export default function App() {
   const projects = [
@@ -106,8 +163,7 @@ export default function App() {
     {
       title: "Second Prototype",
       description: "High-fidelity prototyping",
-      details:
-        "We coded our high-fi prototype, utiliizing React Native...",
+      details: "We coded our high-fi prototype, utiliizing React Native...",
       links: [
         {
           title: "Slides",
@@ -174,7 +230,6 @@ export default function App() {
       icon: "fa fa-file-alt", // File icon for final report
     },
   ];
-  
 
   const [darkMode, setDarkMode] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(true);
@@ -260,6 +315,18 @@ export default function App() {
                         Features
                       </a>
                       <a
+                        href="#demo"
+                        className="text-black dark:text-white hover:text-blue dark:hover:text-lightBlue"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document.querySelector("#demo")?.scrollIntoView({
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        Demos
+                      </a>
+                      <a
                         href="#project"
                         className="text-black dark:text-white hover:text-blue dark:hover:text-lightBlue"
                         onClick={(e) => {
@@ -302,6 +369,18 @@ export default function App() {
                 }}
               >
                 Features
+              </a>
+              <a
+                href="#demo"
+                className="text-black dark:text-white text-sm font-medium transition-colors hover:text-blue dark:hover:text-lightBlue"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector("#demo")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                Demos
               </a>
               <a
                 href="#project"
@@ -366,8 +445,9 @@ export default function App() {
             </h1>
           </div>
           <p className="mt-6 text-lg leading-8 text-darkBlue dark:text-lightBlue text-center">
-            Effortless, personalized study groups tailored <br /> to your
-            schedule, preferences, and learning styles
+            We help college students study together
+            {/* Effortless, personalized study groups tailored <br /> to your
+            schedule, preferences, and learning styles */}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button className="bg-blue hover:bg-darkBlue text-white dark:bg-lightBlue dark:text-darkBlue dark:hover:bg-blue dark:hover:text-white">
@@ -375,7 +455,7 @@ export default function App() {
             </Button>
             <Button
               variant="outline"
-              className="border-blue text-blue hover:bg-blue hover:text-white dark:bg-darkBlue dark:border-lightBlue dark:text-lightBlue dark:hover:bg-lightBlue dark:hover:text-darkBlue"
+              className="bg-white border-blue text-blue hover:bg-blue hover:text-white dark:bg-darkBlue dark:border-lightBlue dark:text-lightBlue dark:hover:bg-lightBlue dark:hover:text-darkBlue"
               onClick={() =>
                 document
                   .getElementById("features")
@@ -387,87 +467,78 @@ export default function App() {
           </div>
         </section>
 
-        {/* Video Section */}
-        <section className="container px-4 py-24 mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
-            Watch our fun concept video:
-          </h2>
-          <div className="max-w-sm mx-auto">
-            <div
-              className="relative w-full rounded-md shadow-lg overflow-hidden"
-              style={{ paddingBottom: "177.78%" }}
-            >
-              <video
-                className="absolute top-0 left-0 w-full h-full object-contain bg-black rounded-md"
-                controls
-                title="LockedIn Concept Video"
-              >
-               <source src={ConceptVideoMP4} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </section>
-
-        {/* Figma Demo Section */}
-        <section className="container px-4 py-24 mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
-            Try our Figma demo:
-          </h2>
-          <div className="max-w-[393px] mx-auto">
-            <div
-              className="relative w-full rounded-md shadow-lg overflow-hidden"
-              style={{ paddingBottom: "216.79%" }}
-            >
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
-                src="https://embed.figma.com/proto/OCFo0SgSrsXFMxZrXMB7Am/LockedIn-Med-Fi-Prototype?node-id=55-452&node-type=canvas&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=55%3A452&embed-host=share"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </section>
-
         {/* Features Section */}
         <section id="features" className="container px-4 py-24 mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
             Features
           </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
+            {features.map((feature, index) => (
               <Card
-                key={i}
-                className="bg-white dark:bg-darkBlue border-lightBlue dark:border-blue"
+                key={index}
+                className="bg-white dark:bg-darkBlue border-lightBlue dark:border-blue flex flex-col"
               >
                 <CardHeader>
                   <CardTitle className="text-blue dark:text-lightBlue">
-                    Feature {i}
+                    {feature.title}
                   </CardTitle>
-                  <CardDescription className="text-darkBlue dark:text-white">
-                    Description for feature {i}
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-black dark:text-white">
-                    Feature details go here...
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-auto rounded-md"
+                  />
+                  <p className="text-black dark:text-white mt-4">
+                    {feature.details}
                   </p>
                 </CardContent>
-                <CardFooter className="flex justify-end mt-auto">
-                  <Button
-                    variant="ghost"
-                    className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
-                  >
-                    <img
-                      src={UnlockIcon}
-                      alt="Unlock icon"
-                      className="w-auto h-4"
-                    />
-                    Unlock More
-                  </Button>
-                </CardFooter>
               </Card>
             ))}
+          </div>
+        </section>
+
+        {/* Demo Section */}
+        <section id="demo" className="container px-4 py-24 mx-auto">
+          <div className="flex flex-col md:flex-row justify-center items-start gap-12 md:gap-24">
+            {/* Video Section */}
+            <div className="w-full md:w-auto md:flex-1 max-w-[450px] mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
+                Watch our fun concept video:
+              </h2>
+              <div
+                className="relative w-full rounded-md shadow-lg overflow-hidden"
+                style={{ paddingBottom: "177.78%" }}
+              >
+                <video
+                  className="absolute top-0 left-0 w-full h-full object-contain bg-black rounded-md"
+                  controls
+                  title="LockedIn Concept Video"
+                >
+                  <source src={ConceptVideoMP4} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            {/* Figma Demo Section */}
+            <div className="w-full md:w-auto md:flex-1 max-w-[393px] mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
+                Try our Figma demo:
+              </h2>
+              <div
+                className="relative w-full rounded-md shadow-lg overflow-hidden"
+                style={{ paddingBottom: "216.79%" }}
+              >
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
+                  src="https://embed.figma.com/proto/OCFo0SgSrsXFMxZrXMB7Am/LockedIn-Med-Fi-Prototype?node-id=55-452&node-type=canvas&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=55%3A452&embed-host=share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -479,71 +550,144 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-            <div key={index} className="relative">
-            <Card className="bg-white dark:bg-darkBlue border-lightBlue dark:border-blue h-full pb-16 relative">
-              {/* Add a container for the title and icon */}
-              <CardHeader className="relative">
-                <CardTitle className="text-blue dark:text-lightBlue">
-                  {project.title}
-                </CardTitle>
-                <CardDescription className="text-darkBlue dark:text-white">
-                  {project.description}
-                </CardDescription>
-                {/* Icon placed in the top-right corner */}
-                <i
-                  className={`${project.icon} text-blue dark:text-lightBlue text-2xl absolute top-4 right-4`}
-                />
-              </CardHeader>
-              <CardContent>
-                <p className="text-black dark:text-white">{project.details}</p>
-              </CardContent>
-            </Card>
-              <div className="absolute bottom-4 w-full px-4 flex justify-between">
-                {/* Dynamically Render Button for Slides or Report */}
-                {project.links.some((link) => link.title === "Slides" || link.title === "Report") && (
-                  <Button
-                    variant="ghost"
-                    className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
-                    onClick={() => {
-                      const reportOrSlidesLink = project.links.find(
-                        (link) => link.title === "Slides" || link.title === "Report"
-                      );
-                      if (reportOrSlidesLink) {
-                        window.open(reportOrSlidesLink.url, "_blank");
-                      }
-                    }}
-                  >
-                    {project.links.some((link) => link.title === "Report")
-                      ? "Report"
-                      : "Slides"}
-                  </Button>
-                )}
-
-                {/* Unlock More Button */}
-                {project.links.filter((link) => link.title !== "Slides" && link.title !== "Report").length >
-                  0 && (
-                  <Button
-                    variant="ghost"
-                    className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
-                    onClick={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      const nonSlideAndReportLinks = project.links.filter(
-                        (link) => link.title !== "Slides" && link.title !== "Report"
-                      );
-                      openDialogAtPosition(rect.x, rect.y, nonSlideAndReportLinks);
-                    }}
-                  >
-                    <img
-                      src={UnlockIcon}
-                      alt="Unlock icon"
-                      className="w-auto h-4 mr-2"
+              <div key={index} className="relative">
+                <Card className="bg-white dark:bg-darkBlue border-lightBlue dark:border-blue h-full pb-16 relative">
+                  {/* Add a container for the title and icon */}
+                  <CardHeader className="relative">
+                    <CardTitle className="text-blue dark:text-lightBlue">
+                      {project.title}
+                    </CardTitle>
+                    <CardDescription className="text-darkBlue dark:text-white">
+                      {project.description}
+                    </CardDescription>
+                    {/* Icon placed in the top-right corner */}
+                    <i
+                      className={`${project.icon} text-blue dark:text-lightBlue text-2xl absolute top-4 right-4`}
                     />
-                    Unlock More
-                  </Button>
-                )}
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-black dark:text-white">
+                      {project.details}
+                    </p>
+                  </CardContent>
+                </Card>
+                <div className="absolute bottom-4 w-full px-4 flex justify-between">
+                  {/* Dynamically Render Button for Slides or Report */}
+                  {project.links.some(
+                    (link) => link.title === "Slides" || link.title === "Report"
+                  ) && (
+                    <Button
+                      variant="ghost"
+                      className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
+                      onClick={() => {
+                        const reportOrSlidesLink = project.links.find(
+                          (link) =>
+                            link.title === "Slides" || link.title === "Report"
+                        );
+                        if (reportOrSlidesLink) {
+                          window.open(reportOrSlidesLink.url, "_blank");
+                        }
+                      }}
+                    >
+                      {project.links.some((link) => link.title === "Report")
+                        ? "Report"
+                        : "Slides"}
+                    </Button>
+                  )}
+
+                  {/* Unlock More Button */}
+                  {project.links.filter(
+                    (link) => link.title !== "Slides" && link.title !== "Report"
+                  ).length > 0 && (
+                    <Button
+                      variant="ghost"
+                      className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
+                      onClick={(e) => {
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const nonSlideAndReportLinks = project.links.filter(
+                          (link) =>
+                            link.title !== "Slides" && link.title !== "Report"
+                        );
+                        openDialogAtPosition(
+                          rect.x,
+                          rect.y,
+                          nonSlideAndReportLinks
+                        );
+                      }}
+                    >
+                      <img
+                        src={UnlockIcon}
+                        alt="Unlock icon"
+                        className="w-auto h-4 mr-2"
+                      />
+                      Unlock More
+                    </Button>
+                  )}
+                </div>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section id="team" className="py-16">
+          <div className="container px-4 mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12 text-darkBlue dark:text-white">
+              Team
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="relative group">
+                  <Card
+                    className="
+                      h-full 
+                      transform 
+                      transition-all 
+                      duration-300 
+                      border 
+                      border-lightBlue 
+                      dark:border-blue
+                      shadow-md
+                      hover:shadow-xl
+                      hover:-translate-y-2
+                      hover:scale-[1.02]
+                      bg-white
+                      dark:bg-darkBlue
+                    "
+                  >
+                    <div
+                      className="relative rounded-lg overflow-hidden"
+                      style={{ paddingBottom: "125%" }}
+                    >
+                      {/* Image and name container */}
+                      <div className="absolute inset-0 group-hover:opacity-0 transition-opacity duration-300">
+                        <div className="h-full flex flex-col">
+                          <div className="flex-1 overflow-hidden">
+                            <img
+                              src={member.photo}
+                              alt={member.name}
+                              className="w-full h-full object-cover rounded-t-lg"
+                            />
+                          </div>
+                          <div className="p-4 bg-white dark:bg-darkBlue">
+                            <h3 className="text-xl font-semibold text-darkBlue dark:text-white text-center">
+                              {member.name}
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Bio container - reversed theme */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 bg-darkBlue dark:bg-white flex items-center justify-center">
+                        <p className="text-white dark:text-gray-600">
+                          {member.bio}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              ))}
             </div>
-          ))}
           </div>
         </section>
 
