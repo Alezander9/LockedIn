@@ -28,28 +28,33 @@ import ConceptVideo from "/video.mov";
 type TeamMember = {
   name: string;
   photo: string;
+  role: string
   bio: string;
 };
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Alexander Yue",
+    name: "Alexander Y.",
     photo: "Alex.jpg",
+    role: "Designer/Developer",
     bio: "Alexander is a sophomore studying Physics and Computer Science at Stanford. He conducts research on fast Machine Learning and Quantum Information Technology, but is also passionate about about building products that are both useful and accessible to everyone.",
   },
   {
-    name: "Evan Hsu",
+    name: "Evan H.",
     photo: "Evan.jpg",
+    role: "Designer/Developer",
     bio: "Evan is a coterm at Stanford studying Human-Computer Interaction. When he’s not playing fingerstyle guitar, he’s teaching—co-leading Ravenswood Reads and a karate class for Kids with Dreams. ",
   },
   {
-    name: "Diego Valdez Duran",
+    name: "Diego V.D.",
     photo: "Diego.jpg",
+    role: "Designer/Developer",
     bio: "Diego is master's student studying HCI with an AI undergraduate background at Stanford University. He’s interested in integrated AI systems within everyday applications to better people’s lives. ",
   },
   {
-    name: "Ecem Yilmazhaliloglu",
+    name: "Ecem Y.",
     photo: "Ecem.jpg",
+    role: "Designer/Developer",
     bio: "Ecem is a senior studying Computer Science at Stanford. ",
   },
 ];
@@ -445,9 +450,7 @@ export default function App() {
             </h1>
           </div>
           <p className="mt-6 text-lg leading-8 text-darkBlue dark:text-lightBlue text-center">
-            We help college students study together
-            {/* Effortless, personalized study groups tailored <br /> to your
-            schedule, preferences, and learning styles */}
+            Effortless, AI-powered study groups that fit your schedule, learning style, and academic goals
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button className="bg-blue hover:bg-darkBlue text-white dark:bg-lightBlue dark:text-darkBlue dark:hover:bg-blue dark:hover:text-white">
@@ -472,7 +475,12 @@ export default function App() {
           <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
             Features
           </h2>
-
+          <p className="text-lg leading-8 text-center text-darkBlue dark:text-lightBlue mb-12">
+          Our platform simplifies collaboration for college students by using AI-powered tools to create pre-planned, 
+          recurring study groups based on shared schedules, learning styles, and academic goals. By automating the formation, 
+          scheduling, and planning of study sessions, we aim to eliminate the hassle of organizing groups, allowing students to focus
+          on learning and on their goals.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <Card
@@ -673,6 +681,10 @@ export default function App() {
                             <h3 className="text-xl font-semibold text-darkBlue dark:text-white text-center">
                               {member.name}
                             </h3>
+                            {/* Role below the name */}
+                            <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
+                              {member.role}
+                            </p>
                           </div>
                         </div>
                       </div>
