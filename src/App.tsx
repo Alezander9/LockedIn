@@ -98,6 +98,10 @@ export default function App() {
           title: "Slides",
           url: window.location.href + "A1slides.pdf",
         },
+        {
+          title: "Powerpoint",
+          url: window.location.href + "A1.pptx",
+        },
       ],
       icon: "fa fa-search", // Search icon for needfinding
     },
@@ -111,6 +115,10 @@ export default function App() {
           title: "Slides",
           url: window.location.href + "A2slides.pdf",
         },
+        {
+          title: "Powerpoint",
+          url: window.location.href + "A2.pptx",
+        },
       ],
       icon: "fa fa-lightbulb", // Lightbulb icon for brainstorming
     },
@@ -123,6 +131,10 @@ export default function App() {
         {
           title: "Slides",
           url: window.location.href + "A4slides.pdf",
+        },
+        {
+          title: "Powerpoint",
+          url: window.location.href + "A4.pptx",
         },
         {
           title: "Video",
@@ -141,6 +153,10 @@ export default function App() {
           title: "Slides",
           url: window.location.href + "A5slides.pdf",
         },
+        {
+          title: "Powerpoint",
+          url: window.location.href + "A5.pptx",
+        },
       ],
       icon: "fa fa-pencil-alt", // Pencil icon for sketching
     },
@@ -153,6 +169,10 @@ export default function App() {
         {
           title: "Slides",
           url: window.location.href + "A6slides.pdf",
+        },
+        {
+          title: "Powerpoint",
+          url: window.location.href + "A6.pptx",
         },
         {
           title: "Prototype",
@@ -175,6 +195,10 @@ export default function App() {
           url: window.location.href + "A8slides.pdf",
         },
         {
+          title: "Powerpoint",
+          url: window.location.href + "A8.pptx",
+        },
+        {
           title: "Prototype",
           url: window.location.href + "prototype.pdf",
         },
@@ -195,6 +219,10 @@ export default function App() {
           title: "Report",
           url: window.location.href + "A9HE.pdf",
         },
+        {
+          title: "XLSX",
+          url: window.location.href + "A9.xlsx",
+        },
       ],
       icon: "fa fa-check-circle", // Check-circle icon for evaluation
     },
@@ -206,6 +234,10 @@ export default function App() {
         {
           title: "Slides",
           url: window.location.href + "A10slides.pdf",
+        },
+        {
+          title: "Powerpoint",
+          url: window.location.href + "A10.pptx",
         },
         {
           title: "Script",
@@ -229,7 +261,11 @@ export default function App() {
       links: [
         {
           title: "Report",
-          url: window.location.href + "A11slides.pdf",
+          url: window.location.href + "FR_Midpoint.pdf",
+        },
+        {
+          title: "Word Doc",
+          url: window.location.href + "FR_Midpoint.docx",
         },
       ],
       icon: "fa fa-file-alt", // File icon for final report
