@@ -22,13 +22,13 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import LockedInLogo from "/LockedInLogo.png";
 import UnlockIcon from "/Unlock.png";
 import ConceptVideoMP4 from "/video.mp4";
-import ConceptVideo from "/video.mov";
+// import ConceptVideo from "/video.mov";
 
 // Add this type definition and team members array before the App component
 type TeamMember = {
   name: string;
   photo: string;
-  role: string
+  role: string;
   bio: string;
 };
 
@@ -99,7 +99,11 @@ export default function App() {
           url: window.location.href + "A1slides.pdf",
         },
         {
-          title: "Powerpoint",
+          title: "Slides (.pdf)",
+          url: window.location.href + "A1slides.pdf",
+        },
+        {
+          title: "Slides (.pptx)",
           url: window.location.href + "A1.pptx",
         },
       ],
@@ -116,7 +120,11 @@ export default function App() {
           url: window.location.href + "A2slides.pdf",
         },
         {
-          title: "Powerpoint",
+          title: "Slides (.pdf)",
+          url: window.location.href + "A2slides.pdf",
+        },
+        {
+          title: "Slides (.pptx)",
           url: window.location.href + "A2.pptx",
         },
       ],
@@ -133,11 +141,15 @@ export default function App() {
           url: window.location.href + "A4slides.pdf",
         },
         {
-          title: "Powerpoint",
+          title: "Slides (.pdf)",
+          url: window.location.href + "A4slides.pdf",
+        },
+        {
+          title: "Slides (.pptx)",
           url: window.location.href + "A4.pptx",
         },
         {
-          title: "Video",
+          title: "Concept Video (.mov)",
           url: window.location.href + "video.mov",
         },
       ],
@@ -154,7 +166,11 @@ export default function App() {
           url: window.location.href + "A5slides.pdf",
         },
         {
-          title: "Powerpoint",
+          title: "Slides (.pdf)",
+          url: window.location.href + "A5slides.pdf",
+        },
+        {
+          title: "Slides (.pptx)",
           url: window.location.href + "A5.pptx",
         },
       ],
@@ -171,15 +187,19 @@ export default function App() {
           url: window.location.href + "A6slides.pdf",
         },
         {
-          title: "Powerpoint",
+          title: "Slides (.pdf)",
+          url: window.location.href + "A6slides.pdf",
+        },
+        {
+          title: "Slides (.pptx)",
           url: window.location.href + "A6.pptx",
         },
         {
-          title: "Prototype",
+          title: "Prototype (figma)",
           url: "https://www.figma.com/proto/OCFo0SgSrsXFMxZrXMB7Am/LockedIn-Med-Fi-Prototype?node-id=0-1&t=8s75gByDfe2TJ0c0-1",
         },
         {
-          title: "README",
+          title: "README (.pdf)",
           url: window.location.href + "README.pdf",
         },
       ],
@@ -195,15 +215,19 @@ export default function App() {
           url: window.location.href + "A8slides.pdf",
         },
         {
-          title: "Powerpoint",
+          title: "Slides (.pdf)",
+          url: window.location.href + "A8slides.pdf",
+        },
+        {
+          title: "Slides (.pptx)",
           url: window.location.href + "A8.pptx",
         },
         {
-          title: "Prototype",
+          title: "COMING SOON: Prototype (expo)",
           url: window.location.href + "prototype.pdf",
         },
         {
-          title: "README",
+          title: "COMING SOON: README (.md)",
           url: window.location.href + "README.md",
         },
       ],
@@ -220,35 +244,47 @@ export default function App() {
           url: window.location.href + "A9HE.pdf",
         },
         {
-          title: "XLSX",
+          title: "Report (.pdf)",
+          url: window.location.href + "A9HE.pdf",
+        },
+        {
+          title: "Report (.xlsx)",
           url: window.location.href + "A9.xlsx",
         },
       ],
       icon: "fa fa-check-circle", // Check-circle icon for evaluation
     },
     {
-      title: "Pitch",
+      title: "Demonstration",
       description: "Poster, pitch deck, and demo video",
       details: "Project details go here...",
       links: [
         {
-          title: "Slides",
-          url: window.location.href + "A10slides.pdf",
+          title: "Poster",
+          url: window.location.href + "A10poster.pdf",
         },
         {
-          title: "Powerpoint",
-          url: window.location.href + "A10.pptx",
+          title: "Poster (.pdf)",
+          url: window.location.href + "A10poster.pdf",
         },
         {
-          title: "Script",
+          title: "Poster (.pptx)",
+          url: window.location.href + "A10poster.pptx",
+        },
+        {
+          title: "COMING SOON: Pitch (.pdf)",
           url: window.location.href + "script.pdf",
         },
         {
-          title: "Poster",
-          url: window.location.href + "poster.pdf",
+          title: "COMING SOON: Pitch (.pptx)",
+          url: window.location.href + "script.pptx",
         },
         {
-          title: "Demo Video",
+          title: "COMING SOON: Script (.pdf)",
+          url: window.location.href + "script.pdf",
+        },
+        {
+          title: "COMING SOON: Demo Video (.mov)",
           url: window.location.href + "demo.mov",
         },
       ],
@@ -264,7 +300,11 @@ export default function App() {
           url: window.location.href + "FR_Midpoint.pdf",
         },
         {
-          title: "Word Doc",
+          title: "COMING SOON:Report (.pdf)",
+          url: window.location.href + "FR_Midpoint.pdf",
+        },
+        {
+          title: "COMING SOON: Report (.docx)",
           url: window.location.href + "FR_Midpoint.docx",
         },
       ],
@@ -274,7 +314,11 @@ export default function App() {
 
   const [darkMode, setDarkMode] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(true);
-  const [dialogPosition, setDialogPosition] = useState({ x: 0, y: 0 });
+  const [dialogPosition, setDialogPosition] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+  });
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedLinks, setSelectedLinks] = useState<
     { title: string; url: string }[]
@@ -298,11 +342,16 @@ export default function App() {
   };
 
   const openDialogAtPosition = (
-    x: number,
-    y: number,
+    element: HTMLElement,
     projectLinks: { title: string; url: string }[]
   ) => {
-    setDialogPosition({ x, y });
+    const card = element.closest(".relative")!;
+    const cardRect = card.getBoundingClientRect();
+    setDialogPosition({
+      x: cardRect.left + cardRect.width / 2,
+      y: cardRect.bottom,
+      width: cardRect.width,
+    });
     setSelectedLinks(projectLinks);
     setDialogOpen(true);
   };
@@ -486,7 +535,8 @@ export default function App() {
             </h1>
           </div>
           <p className="mt-6 text-lg leading-8 text-darkBlue dark:text-lightBlue text-center">
-            Effortless, AI-powered study groups that fit your schedule, learning style, and academic goals
+            Effortless, AI-powered study groups that fit your schedule, learning
+            style, and academic goals
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button className="bg-blue hover:bg-darkBlue text-white dark:bg-lightBlue dark:text-darkBlue dark:hover:bg-blue dark:hover:text-white">
@@ -512,10 +562,12 @@ export default function App() {
             Features
           </h2>
           <p className="text-lg leading-8 text-center text-darkBlue dark:text-lightBlue mb-12">
-          Our platform simplifies collaboration for college students by using AI-powered tools to create pre-planned, 
-          recurring study groups based on shared schedules, learning styles, and academic goals. By automating the formation, 
-          scheduling, and planning of study sessions, we aim to eliminate the hassle of organizing groups, allowing students to focus
-          on learning and on their goals.
+            Our platform simplifies collaboration for college students by using
+            AI-powered tools to create pre-planned, recurring study groups based
+            on shared schedules, learning styles, and academic goals. By
+            automating the formation, scheduling, and planning of study
+            sessions, we aim to eliminate the hassle of organizing groups,
+            allowing students to focus on learning and on their goals.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((feature, index) => (
@@ -618,7 +670,10 @@ export default function App() {
                 <div className="absolute bottom-4 w-full px-4 flex justify-between">
                   {/* Dynamically Render Button for Slides or Report */}
                   {project.links.some(
-                    (link) => link.title === "Slides" || link.title === "Report"
+                    (link) =>
+                      link.title === "Slides" ||
+                      link.title === "Report" ||
+                      link.title === "Poster"
                   ) && (
                     <Button
                       variant="ghost"
@@ -626,7 +681,9 @@ export default function App() {
                       onClick={() => {
                         const reportOrSlidesLink = project.links.find(
                           (link) =>
-                            link.title === "Slides" || link.title === "Report"
+                            link.title === "Slides" ||
+                            link.title === "Report" ||
+                            link.title === "Poster"
                         );
                         if (reportOrSlidesLink) {
                           window.open(reportOrSlidesLink.url, "_blank");
@@ -635,26 +692,31 @@ export default function App() {
                     >
                       {project.links.some((link) => link.title === "Report")
                         ? "Report"
+                        : project.links.some((link) => link.title === "Poster")
+                        ? "Poster"
                         : "Slides"}
                     </Button>
                   )}
 
                   {/* Unlock More Button */}
                   {project.links.filter(
-                    (link) => link.title !== "Slides" && link.title !== "Report"
+                    (link) =>
+                      link.title !== "Slides" &&
+                      link.title !== "Report" &&
+                      link.title !== "Poster"
                   ).length > 0 && (
                     <Button
                       variant="ghost"
                       className="text-blue hover:text-darkBlue dark:text-lightBlue dark:hover:text-white flex items-center"
                       onClick={(e) => {
-                        const rect = e.currentTarget.getBoundingClientRect();
                         const nonSlideAndReportLinks = project.links.filter(
                           (link) =>
-                            link.title !== "Slides" && link.title !== "Report"
+                            link.title !== "Slides" &&
+                            link.title !== "Report" &&
+                            link.title !== "Poster"
                         );
                         openDialogAtPosition(
-                          rect.x,
-                          rect.y,
+                          e.currentTarget,
                           nonSlideAndReportLinks
                         );
                       }}
@@ -757,7 +819,9 @@ export default function App() {
             position: "fixed",
             left: `${dialogPosition.x}px`,
             top: `${dialogPosition.y}px`,
-            transform: "translate(-50%, -100%)",
+            transform: "translate(-50%, -120%)",
+            maxWidth: `${dialogPosition.width}px`,
+            width: "100%",
           }}
         >
           <div className="flex flex-col space-y-2">
