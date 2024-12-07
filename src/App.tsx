@@ -22,6 +22,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import LockedInLogo from "/LockedInLogo.png";
 import UnlockIcon from "/Unlock.png";
 import ConceptVideoMP4 from "/video.mp4";
+import DemoVideoMP4 from "/A10demovideo.mp4";
 // import ConceptVideo from "/video.mov";
 
 // Add this type definition and team members array before the App component
@@ -223,12 +224,12 @@ export default function App() {
           url: window.location.href + "A8.pptx",
         },
         {
-          title: "COMING SOON: Prototype (expo)",
-          url: window.location.href + "prototype.pdf",
+          title: "Prototype (expo go instructions)",
+          url: window.location.href + "A8 README.pdf",
         },
         {
-          title: "COMING SOON: README (.md)",
-          url: window.location.href + "README.md",
+          title: "README (.pdf)",
+          url: window.location.href + "A8 README.pdf",
         },
       ],
       icon: "fa fa-laptop-code", // Laptop code icon for high-fidelity prototyping
@@ -261,31 +262,31 @@ export default function App() {
       links: [
         {
           title: "Poster",
-          url: window.location.href + "A10poster.pdf",
+          url: window.location.href + "A10Poster.pdf",
         },
         {
           title: "Poster (.pdf)",
-          url: window.location.href + "A10poster.pdf",
+          url: window.location.href + "A10Poster.pdf",
         },
         {
           title: "Poster (.pptx)",
-          url: window.location.href + "A10poster.pptx",
+          url: window.location.href + "A10Poster.pptx",
         },
         {
-          title: "COMING SOON: Pitch (.pdf)",
-          url: window.location.href + "script.pdf",
+          title: "Pitch (.pdf)",
+          url: window.location.href + "A10PitchSlide.pdf",
         },
         {
-          title: "COMING SOON: Pitch (.pptx)",
-          url: window.location.href + "script.pptx",
+          title: "Pitch (.pptx)",
+          url: window.location.href + "A10PitchSlide.pptx",
         },
         {
-          title: "COMING SOON: Script (.pdf)",
-          url: window.location.href + "script.pdf",
+          title: "Script (.pdf)",
+          url: window.location.href + "A10PitchScript.pdf",
         },
         {
-          title: "COMING SOON: Demo Video (.mov)",
-          url: window.location.href + "demo.mov",
+          title: "Demo Video (.mp4)",
+          url: window.location.href + "A10demovideo.mp4",
         },
       ],
       icon: "fa fa-microphone", // Microphone icon for pitch
@@ -297,15 +298,15 @@ export default function App() {
       links: [
         {
           title: "Report",
-          url: window.location.href + "FR_Midpoint.pdf",
+          url: window.location.href + "A10Report.pdf",
         },
         {
-          title: "COMING SOON:Report (.pdf)",
-          url: window.location.href + "FR_Midpoint.pdf",
+          title: "Report (.pdf)",
+          url: window.location.href + "A10Report.pdf",
         },
         {
-          title: "COMING SOON: Report (.docx)",
-          url: window.location.href + "FR_Midpoint.docx",
+          title: "Report (.docx)",
+          url: window.location.href + "A10Report.docx",
         },
       ],
       icon: "fa fa-file-alt", // File icon for final report
@@ -539,7 +540,14 @@ export default function App() {
             style, and academic goals
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button className="bg-blue hover:bg-darkBlue text-white dark:bg-lightBlue dark:text-darkBlue dark:hover:bg-blue dark:hover:text-white">
+            <Button
+              className="bg-blue hover:bg-darkBlue text-white dark:bg-lightBlue dark:text-darkBlue dark:hover:bg-blue dark:hover:text-white"
+              onClick={() =>
+                document
+                  .querySelector("#demo")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
               Get Started
             </Button>
             <Button
@@ -597,9 +605,9 @@ export default function App() {
 
         {/* Demo Section */}
         <section id="demo" className="container px-4 py-24 mx-auto">
-          <div className="flex flex-col md:flex-row justify-center items-start gap-12 md:gap-24">
-            {/* Video Section */}
-            <div className="w-full md:w-auto md:flex-1 max-w-[450px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Video Section - Top Left */}
+            <div className="w-full max-w-[450px] mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
                 Watch our fun concept video:
               </h2>
@@ -618,8 +626,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Figma Demo Section */}
-            <div className="w-full md:w-auto md:flex-1 max-w-[393px] mx-auto">
+            {/* Figma Demo Section - Top Right */}
+            <div className="w-full max-w-[393px] mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
                 Try our Figma demo:
               </h2>
@@ -632,6 +640,43 @@ export default function App() {
                   style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
                   src="https://embed.figma.com/proto/OCFo0SgSrsXFMxZrXMB7Am/LockedIn-Med-Fi-Prototype?node-id=55-452&node-type=canvas&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=55%3A452&embed-host=share"
                   allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* Demo Video Section - Bottom Left */}
+            <div className="w-full max-w-[450px] mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
+                Watch our demo video:
+              </h2>
+              <div
+                className="relative w-full rounded-md shadow-lg overflow-hidden"
+                style={{ paddingBottom: "133.33%" }}
+              >
+                <video
+                  className="absolute top-0 left-0 w-full h-full object-contain bg-black rounded-md"
+                  controls
+                  title="LockedIn Demo Video"
+                >
+                  <source src={DemoVideoMP4} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            {/* Expo Go QR Section - Bottom Right */}
+            <div className="w-full max-w-[450px] mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12 text-black dark:text-white">
+                Test our app with Expo Go:
+              </h2>
+              <div
+                className="relative w-full rounded-md shadow-lg overflow-hidden"
+                style={{ paddingBottom: "101.05%" }}
+              >
+                <img
+                  src="ExpoGoQR.png"
+                  alt="Expo Go QR Code"
+                  className="absolute top-0 left-0 w-full h-full object-contain bg-black rounded-md"
                 />
               </div>
             </div>
